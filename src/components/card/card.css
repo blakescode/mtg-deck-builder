@@ -1,0 +1,8 @@
+.card-image {
+  height: 340px;
+  width: 244px;
+}
+
+.card-container:not(:first-child) { 
+  margin-top: -272px 
+}

@@ -1,15 +1,21 @@
-import Card from './components/card/Card'
+import Deck from './components/deck/Deck'
 import './App.css';
 
 function App() {
-  const card = {
-    name: 'angelic-quartermaster',
-    set: 'vow'
-  }
+  const cards = [
+    {
+      name: 'adamant-will',
+      set: 'vow'
+    },
+    {
+      name: 'angelic-quartermaster',
+      set: 'vow'
+    }
+  ]
   return (
     <div className="App">
       <header className="App-header">
-        <Card card={card}/>
+        <Deck cards={cards}/>
       </header>
     </div>
   );

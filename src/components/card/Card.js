@@ -1,11 +1,11 @@
 import React from 'react'
+import { getImageUrl } from '../../helpers/images'
+import './card.css'
 
 const Card = ({ card }) => {
-  const imgUrl = window.location.origin + '/images/' + card.set + '/' + card.name + '.png'
-
   return (
-    <div>
-      <img src={imgUrl} alt={card.name}/>
+    <div className='card-container'>
+      <img src={getImageUrl(card)} alt={card.name} className='card-image'/>
     </div>
   )
 }
