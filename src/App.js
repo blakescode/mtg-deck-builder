@@ -1,21 +1,13 @@
 import Deck from './components/deck/Deck'
 import './App.css';
+import { buildSamplePack } from './helpers/packs';
 
 function App() {
-  const cards = [
-    {
-      name: 'adamant-will',
-      set: 'vow'
-    },
-    {
-      name: 'angelic-quartermaster',
-      set: 'vow'
-    }
-  ]
+  const cardPool = buildSamplePack();
   return (
     <div className="App">
       <header className="App-header">
-        <Deck cards={cards}/>
+        <Deck cards={cardPool}/>
       </header>
     </div>
   );
