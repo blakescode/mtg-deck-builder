@@ -1,8 +1,23 @@
-.card-image {
+.card-tooltip {
   height: 340px;
   width: 244px;
 }
 
+.card-image {
+  height: 224px;
+  width: 160px;
+}
+
+.card-container {
+  position: relative;
+}
+
 .card-container:not(:first-child) { 
-  margin-top: -238px 
+  margin-top: -176px;
+}
+
+.tooltip-container {
+  position: absolute;
+  top: 0px;
+  left: 170px;
 }
