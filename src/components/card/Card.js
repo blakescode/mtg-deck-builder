@@ -4,6 +4,7 @@ import './card.css'
 
 const Card = ({ card }) => {
   const [showTooltip, setShowTooltip] = useState(false);
+
   return (
     <div
       className='card-container'

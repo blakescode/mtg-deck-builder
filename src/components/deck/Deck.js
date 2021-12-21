@@ -7,7 +7,7 @@ const Deck = ({ cards }) => {
       <ul>
         {cards.map(card => {
           return (
-            <Card card={card} />
+            <Card card={card} key={card.key} />
           )
         })}
       </ul>

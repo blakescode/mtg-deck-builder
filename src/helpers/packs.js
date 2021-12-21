@@ -28,7 +28,7 @@ Each Draft Booster contains 15 Innistrad: Crimson Vow cards, including one showc
 9x Single-faced commons
 */
 export function buildSamplePack() {
-  const pack = [];
+  let pack = [];
   pack.push(getRareSlot());
 
   const hasRareTransform = pack[0].flip_image !== null;
@@ -51,6 +51,13 @@ export function buildSamplePack() {
   for (let i = 0; i < 9; i++) {
     pack.push(getRandomFromSet(commons));
   }
+
+  // add uuid keys for react purposes
+  pack = pack.map(function(el) {
+    let card = Object.assign({}, el);
+    card.key = crypto.randomUUID();
+    return card;
+  });
 
   return pack;
 }
