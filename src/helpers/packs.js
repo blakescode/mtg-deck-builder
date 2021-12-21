@@ -1,7 +1,7 @@
 import set from '../data/sets/vow.json'
 
 const rares = set.filter(card => card.rarity.toLowerCase() === 'rare')
-const mythics = set.filter(card => card.rarity.toLowerCase() === 'mythics')
+const mythics = set.filter(card => card.rarity.toLowerCase() === 'mythic')
 /* 
   Each booster needs either a mythic/rare/uncommon transform card. We will roll randomly for the rare/mythics.
   If we don't have a transform card at the rare/mythic slot, we will pull from the uncommon transforms.
@@ -27,17 +27,19 @@ Each Draft Booster contains 15 Innistrad: Crimson Vow cards, including one showc
 1x Double-faced common
 9x Single-faced commons
 */
-export function buildSamplePack() {
+export function buildDraftPack() {
   let pack = [];
   pack.push(getRareSlot());
 
-  const hasRareTransform = pack[0].flip_image !== null;
-  // If we don't have a transform card at the rare/mythic slot, we will pull from the uncommon transforms.
-  if (!hasRareTransform) {
-    pack.push(getRandomFromSet(uncommonTransforms));
-  } else {
-    pack.push(getRandomFromSet(uncommons));
-  }
+  // const hasRareTransform = pack[0].flip_image !== null;
+  // // If we don't have a transform card at the rare/mythic slot, we will pull from the uncommon transforms.
+  // if (!hasRareTransform) {
+  //   pack.push(getRandomFromSet(uncommonTransforms));
+  // } else {
+  //   pack.push(getRandomFromSet(uncommons));
+  // }
+
+  pack.push(getRandomFromSet(uncommonTransforms));
 
   // guaranteed 2 regular uncommons
   for (let i = 0; i < 2; i++) {
@@ -62,6 +64,17 @@ export function buildSamplePack() {
   return pack;
 }
 
+export function buildSealedPool() {
+  let sealedPool = [];
+  for (let i = 0; i < 6; i++) {
+    let pack = buildDraftPack();
+    pack.forEach(card => {
+      sealedPool.push(card);
+    });
+  }
+  return sealedPool;
+}
+
 function randomIndex(setSize) {
   return Math.floor(Math.random() * setSize);
 }
@@ -76,5 +89,10 @@ function getRareSlot() {
 }
 
 function getRandomFromSet(set) {
-  return set[randomIndex(set.length)];
+  let random = randomIndex(set.length - 1);
+  if (random >= set.length - 1) {
+    console.log('out of bounds random', random, set);
+  }
+  return set[random];
+  //return set[randomIndex(set.length - 1)];
 }

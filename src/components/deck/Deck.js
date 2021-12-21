@@ -1,16 +1,17 @@
 import React from 'react'
-import Card from '../card/Card'
+import { sortByColor } from '../../helpers/filters'
+import Column from './Column'
+import './deck.css'
 
 const Deck = ({ cards }) => {
+  const cardPool = sortByColor(cards);
   return (
-    <div>
-      <ul>
-        {cards.map(card => {
-          return (
-            <Card card={card} key={card.key} />
-          )
-        })}
-      </ul>
+    <div className="deck-container">
+      {cardPool.map(column => {
+        return (
+          <Column cards={column}/>
+        )
+      })}
     </div>
   )
 }

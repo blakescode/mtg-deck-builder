@@ -1,0 +1,7 @@
+.card-column {
+  flex: 1;
+}  
+
+.card-column:not(:last-child) {
+  margin-right: 5px;
+} 

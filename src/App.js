@@ -1,9 +1,10 @@
 import Deck from './components/deck/Deck'
 import './App.css';
-import { buildSamplePack } from './helpers/packs';
+import { buildSealedPool } from './helpers/packs';
 
 function App() {
-  const cardPool = buildSamplePack();
+  const cardPool = buildSealedPool();
+  console.log('sealed pool', cardPool);
   return (
     <div className="App">
       <header className="App-header">
