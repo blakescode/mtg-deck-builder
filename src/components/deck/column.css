@@ -5,3 +5,7 @@
 .card-column:not(:last-child) {
   margin-right: 5px;
 } 
+
+ul {
+  padding: 5px;
+}

@@ -13,7 +13,7 @@
 }
 
 .card-container:not(:first-child) { 
-  margin-top: -176px;
+  margin-top: -203px;
 }
 
 .tooltip-container {

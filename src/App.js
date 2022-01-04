@@ -7,9 +7,7 @@ function App() {
   console.log('sealed pool', cardPool);
   return (
     <div className="App">
-      <header className="App-header">
-        <Deck cards={cardPool}/>
-      </header>
+      <Deck cards={cardPool}/>
     </div>
   );
 }
