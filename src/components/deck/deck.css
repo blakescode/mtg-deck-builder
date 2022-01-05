@@ -4,6 +4,17 @@
   overflow-y: scroll;
 }
 
+/* Hide scrollbar for Chrome, Safari and Opera */
+.deck-container::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.deck-container {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
 /* .App-header {
   background-color: #282c34;
   min-height: 100vh;

@@ -1,0 +1,9 @@
+.stats-container {
+  width: 100%;
+}
+
+.stats-display {
+  display: inline-block;
+  color: white;
+  font-size: 16px;
+}

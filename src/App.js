@@ -1,13 +1,22 @@
 import Deck from './components/deck/Deck'
+import Stats from './components/deck/Stats'
 import './App.css';
 import { buildSealedPool } from './helpers/packs';
 
 function App() {
   const cardPool = buildSealedPool();
-  console.log('sealed pool', cardPool);
+  const deckBuild = [];
   return (
     <div className="App">
-      <Deck cards={cardPool}/>
+      <div className="card-pool-container">
+        <Deck cards={cardPool}/>
+      </div>
+      <div className="deck-stats-container">
+        <Stats cards={cardPool}/>
+      </div>
+      {/* <div className="deck-build-container">
+        <Deck cards={deckBuild}/>
+      </div> */}
     </div>
   );
 }
