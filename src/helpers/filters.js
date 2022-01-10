@@ -9,6 +9,10 @@ export function sortByColor(cards) {
   return cardPool;
 }
 
+export function search(substring, cards) {
+  return cards.filter(card => card.name.includes(substring));
+}
+
 function colorFilter(card, color) {
   return card.colors.length === 1 && card.colors[0] === color;
 }
