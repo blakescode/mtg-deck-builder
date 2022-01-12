@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import { getImageUrl } from '../../helpers/images'
 import './card.css'
 
-const Card = ({ card }) => {
+const Card = ({ card, handleMoveCard }) => {
   const [showTooltip, setShowTooltip] = useState(false);
 
   return (
@@ -10,6 +10,7 @@ const Card = ({ card }) => {
       className='card-container'
       onMouseEnter={() => setShowTooltip(true)}
       onMouseLeave={() => setShowTooltip(false)}
+      onClick={handleMoveCard}
     >
       <img src={getImageUrl(card)} alt={card.name} className='card-image'/>
       {showTooltip && (
