@@ -4,28 +4,28 @@ import Filter from './components/filter/Filter'
 import { useState, useEffect } from 'react'
 import './App.css';
 import { buildSealedPool } from './helpers/packs';
+import { search, sortByColor } from './helpers/filters';
 
 function App() {
-  const [ filter, setFilter ] = useState('')
+  const [ searchFilter, setSearchFilter ] = useState('')
   const [ cardPool, setCardPool ] = useState([])
   const [ deckList, setDeckList ] = useState([]);
 
   const handleFilterChange = (event) => {
-    setFilter(event.target.value)
+    setSearchFilter(event.target.value)
   }
 
   const handleMoveCard = (cardKey) => {
-    console.log('handleMoveCard => ', cardKey);
     if (cardPool.find(card => card.key === cardKey)) {
-      console.log('found card with key');
       const cardToMove = cardPool.filter(card => card.key === cardKey);
-      console.log('cardToMove', cardToMove);
-      console.log('currentCardPool', cardPool);
       // remove from CardPool list
       setCardPool(cardPool.filter(card => card.key !== cardKey));
-      console.log('cardpoolafter removal', cardPool);
       // add to DeckList
       setDeckList((deckList) => [...deckList, cardToMove[0]]);
+    } else {
+      const cardToMove = deckList.filter(card => card.key === cardKey);
+      setDeckList(deckList.filter(card => card.key !== cardKey));
+      setCardPool((cardPool) => [...cardPool, cardToMove[0]]);
     }
   }
 
@@ -34,29 +34,28 @@ function App() {
     setCardPool(cards);
   }, [])
 
-  const filtered = () => {
-    return cardPool.filter(card => 
-      card.name.toLowerCase().includes(filter)
-    )
+  const applyFilters = (cards) => {
+    return search(searchFilter, cards);
   };
 
 
   return (
     <div className="App">
       <div className="card-pool-container">
-        <Deck cards={filtered()} handleMoveCard={handleMoveCard}/>
-      </div>
-      <div className="deck-stats-container">
-        <Stats cards={filtered()}/>
+        <Deck cards={applyFilters(cardPool)} handleMoveCard={handleMoveCard}/>
       </div>
       <div className="filter-container">
         <Filter 
-          filter={filter}
+          filter={searchFilter}
           filterChange={handleFilterChange}
         />
       </div>
+      <div className="deck-stats-container">
+        <Stats cards={applyFilters(deckList)}/>
+      </div>
+
       <div className="deck-build-container">
-        <Deck cards={deckList}/>
+        <Deck cards={applyFilters(deckList)} handleMoveCard={handleMoveCard}/>
       </div>
     </div>
   );

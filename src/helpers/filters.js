@@ -14,6 +14,5 @@ export function search(substring, cards) {
 }
 
 function colorFilter(card, color) {
-  console.log('colorFilter with card => ', card, color)
   return card.colors.length === 1 && card.colors[0] === color;
 }

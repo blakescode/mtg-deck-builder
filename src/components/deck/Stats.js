@@ -5,13 +5,13 @@ const Stats = ({ cards }) => {
   return (
     <div className="stats-container">
       <div className="stats-display">
-        Cards: {cards.length}
-      </div>
-      <div className="stats-display">
-        Lands: {cards.filter(card => card.type.toLowerCase().includes('land')).length}
+        Main Deck: {cards.length}
       </div>
       <div className="stats-display">
         Creatures: {cards.filter(card => card.type.toLowerCase().includes('creature')).length}
+      </div>
+      <div className="stats-display">
+        Lands: {cards.filter(card => card.type.toLowerCase().includes('land')).length}
       </div>
     </div>
   )
