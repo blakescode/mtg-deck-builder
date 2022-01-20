@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react'
 import './App.css';
 import { buildSealedPool } from './helpers/packs';
 import { search, sortByColor } from './helpers/filters';
+import { deckListToMTGA } from './helpers/export';
 
 function App() {
   const [ searchFilter, setSearchFilter ] = useState('')
@@ -57,6 +58,9 @@ function App() {
       <div className="deck-build-container">
         <Deck cards={applyFilters(deckList)} handleMoveCard={handleMoveCard}/>
       </div>
+      <button onClick={() => deckListToMTGA(deckList, cardPool)}>
+        Export to MTGA format
+      </button>
     </div>
   );
 }
